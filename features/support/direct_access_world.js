@@ -1,9 +1,9 @@
 var DirectAccessWorld = function DirectAccessWorld(callback) {
   var self = this;
-  var Player = require('../../src/Player.js');
-  var Song = require('../../src/Song.js');
-  
-  this.cleanUp(callback);
+  Player = require('../../src/Player.js');
+  Song = require('../../src/Song.js');
+    
+  callback();
 };
 
 exports.World = DirectAccessWorld;

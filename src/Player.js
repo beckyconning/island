@@ -1,4 +1,4 @@
-function Player() {
+var Player = function Player() {
 }
 Player.prototype.play = function(song) {
   this.currentlyPlayingSong = song;
@@ -20,3 +20,5 @@ Player.prototype.resume = function() {
 Player.prototype.makeFavorite = function() {
   this.currentlyPlayingSong.persistFavoriteStatus(true);
 };
+
+if (module && module.exports) { module.exports = Player; }
