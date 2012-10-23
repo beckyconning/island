@@ -1,5 +1,5 @@
 var playerStepDefs = function() {
-  this.World = require("../support/direct_access_world.js").World;
+  this.World = require("../support/world").World;
   this.Given(/^the player isn't playing the specified song$/, function(callback) {
     player = new Player();
     player.pause();
