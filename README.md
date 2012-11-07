@@ -8,13 +8,13 @@ Island is a point and click adventure game for the web.
 
 Use BDD and agile iterations to develop theses features in order:
 
-*Non-playable rendering demo (Spikes: CSS Transitions, WebGL/Three.js)
-*Playable text adventure
-*Playable 'first person' point and click adventure (no visual player character)
-*Playable 'third person' point and click adventure (with visual player character)
+* Non-playable rendering demo (Spikes: CSS Transitions, WebGL/Three.js)
+* Playable text adventure
+* Playable 'first person' point and click adventure (no visual player character)
+* Playable 'third person' point and click adventure (with visual player character)
 
 ### Example scenario
-'''gherkin
+```gherkin
 Scenario: go to forest successfully 
     Given I start a new game
     When I talk to Ms Rabbit
@@ -24,4 +24,4 @@ Scenario: go to forest successfully
     And use my map
     And walk to the forest
     Then I should be in the forest
-'''
+```
