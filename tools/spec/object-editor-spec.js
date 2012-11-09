@@ -7,23 +7,24 @@ describe("ObjectEditor", function() {
       editor = new ObjectEditor();
     });
     
-    it("updates the given element's background image", function() {      
-      loadFixtures('object-editor.html');
-      
-      var element = $('div#element');
-            
-      var file = new Blob();
-      
-      String.prototype.match = jasmine.createSpy().andReturn(true);
-                  
-      var objectEditor = new ObjectEditor;
-      objectEditor.fileReader.result = fakeDataURL;
-      objectEditor.fileReader.readAsDataURL = jasmine.createSpy();
-                  
-      objectEditor.updateBackgroundImage(element, file);
-            
-      expect($(element).css("background-image"))
-        .toEqual("url(" + fakeDataURL + ")");
-    });
+    it("updates the given element's background image from a selected file", 
+      function() {      
+        loadFixtures('object-editor.html');
+        
+        var element = $('div#element');
+              
+        var file = new Blob();
+        
+        String.prototype.match = jasmine.createSpy().andReturn(true);
+                    
+        var objectEditor = new ObjectEditor;
+        objectEditor.fileReader.result = fakeDataURL;
+        objectEditor.fileReader.readAsDataURL = jasmine.createSpy();
+                    
+        objectEditor.updateBackgroundImage(element, file);
+              
+        expect($(element).css("background-image"))
+          .toEqual("url(" + fakeDataURL + ")");
+      });
   });
 });
