@@ -46,7 +46,8 @@ var ActualBrowserWorld = function ActualBrowserWorld(callback) {
 
 // Domain Specific Language Helpers:
 
-objectEditorURL = 'http://localhost/~becky/island/tools/object-editor/index.html';
+objectEditorURL = 
+  'http://localhost/~becky/island/tools/object-editor/index.html';
 
 stepComplete = function(callback) {
   return function(err) {
@@ -72,6 +73,7 @@ ActualBrowserWorld.prototype.supplyAnImage = function(callback) {
     .focus("name=file")
     .type("name=file", "/Users/becky/Sites/island/tools/fixtures/mr-fox.png")
     .assertValue("name=file", "mr-fox.png")
+    .assertAttribute("name=file@style", "*background-image: url('data:*'")
     .end(function(err) { stepComplete(callback)(err) });
 }
 
