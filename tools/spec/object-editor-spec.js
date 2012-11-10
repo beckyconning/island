@@ -1,30 +1,28 @@
 describe("ObjectEditor", function() {  
-  var editor;
+  var objectEditor, element, file;
   jasmine.getFixtures().fixturesPath = 'fixtures';
 
-  describe("#updateBackgroundImage", function() {
+  beforeEach(function () {
+    objectEditor = new ObjectEditor();
+  });
+
+  describe("updateBackgroundImage()", function() {
     beforeEach(function() {
-      editor = new ObjectEditor();
+      loadFixtures('object-editor.html');
+      element = $('div#element');
+      file = new Blob();
+      String.prototype.match = jasmine.createSpy().andReturn(true);
+
+      objectEditor.fileReader.result = fakeDataURL;
+      objectEditor.fileReader.readAsDataURL = jasmine.createSpy();
     });
     
-    it("updates the given element's background image from a selected file", 
-      function() {      
-        loadFixtures('object-editor.html');
-        
-        var element = $('div#element');
-              
-        var file = new Blob();
-        
-        String.prototype.match = jasmine.createSpy().andReturn(true);
-                    
-        var objectEditor = new ObjectEditor;
-        objectEditor.fileReader.result = fakeDataURL;
-        objectEditor.fileReader.readAsDataURL = jasmine.createSpy();
-                    
-        objectEditor.updateBackgroundImage(element, file);
-              
-        expect($(element).css("background-image"))
-          .toEqual("url(" + fakeDataURL + ")");
-      });
+    it("updates the given element's background image from a selected file", function() {
+      objectEditor.updateBackgroundImage(element, file);
+
+      var actualBgImage = $(element).css("background-image");
+      var expectedBgImage = "url(" + fakeDataURL + ")";
+      expect(actualBgImage).toEqual(expectedBgImage);
+    });
   });
 });
