@@ -1,4 +1,4 @@
-var ObjectEditor2 = function(FileReader) {
+var ObjectEditor = function(FileReader) {
   var fileReader, elementToUpdate;
 
   if (typeof FileReader === "undefined") {
@@ -22,7 +22,7 @@ var ObjectEditor2 = function(FileReader) {
     },
 
     toString: function toString() {
-      return "[object ObjectEditor2]";
+      return "[object ObjectEditor]";
     }
   };
 
@@ -47,4 +47,4 @@ var ObjectEditor2 = function(FileReader) {
 //  this.prototype = new FileReader();
 //}
 
-if (typeof(module) !== 'undefined') { module.exports = ObjectEditor2; }
+if (typeof(module) !== 'undefined') { module.exports = ObjectEditor; }

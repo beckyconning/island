@@ -1,4 +1,4 @@
-describe("ObjectEditor2", function() {
+describe("ObjectEditor", function() {
   var objectEditor, FileReaderObject, fileReader, file, element;
   jasmine.getFixtures().fixturesPath = 'fixtures';
 
@@ -17,7 +17,7 @@ describe("ObjectEditor2", function() {
     file.type = {};
     file.type.match = jasmine.createSpy("match method");
 
-    objectEditor = ObjectEditor2(FileReaderObject);
+    objectEditor = ObjectEditor(FileReaderObject);
   });
 
   describe("constructor", function () {
@@ -27,7 +27,7 @@ describe("ObjectEditor2", function() {
       });
 
       it("returns a true", function () {
-        objectEditor = ObjectEditor2(FileReaderObject);
+        objectEditor = ObjectEditor(FileReaderObject);
 
         expect(objectEditor).toBe(true);
       });
@@ -38,19 +38,19 @@ describe("ObjectEditor2", function() {
         FileReaderObject = jasmine.createSpy("FileReader");
       });
 
-      it("returns an ObjectEditor2", function () {
-        objectEditor = ObjectEditor2(FileReaderObject);
+      it("returns an ObjectEditor", function () {
+        objectEditor = ObjectEditor(FileReaderObject);
 
-        expect(objectEditor.toString()).toEqual("[object ObjectEditor2]");
+        expect(objectEditor.toString()).toEqual("[object ObjectEditor]");
       });
     });
   });
 
   describe("updateBackgroundImage()", function () {
 
-    describe("when the match finds what its looking for", function () {
+    describe("when the file is an image", function () {
       beforeEach(function () {
-        file.type.match.andReturn(true);
+        file.type = "image/png"
       });
 
       it("sets the onload of the FileReader instance to onFileRead method", function () {
@@ -66,9 +66,9 @@ describe("ObjectEditor2", function() {
       });
     });
 
-    describe("when the match does not find what its looking for", function () {
+    describe("when the filetype does not contain image", function () {
       beforeEach(function () {
-        file.type.match.andReturn(false);
+        file.type = "text/html";
       });
 
       it("does not set the onload callback of the FileReader instance", function () {
